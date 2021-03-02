@@ -1,0 +1,8 @@
+<!DOCTYPE Equipos[
+<!ELEMENT Equipos (Equipo*)>
+<!ELEMENT Equipo (Titulos*, Entrenador, Presidente)>
+<!ATTLIST Equipo nombre CDATA #REQUIRED pais CDATA #REQUIRED>
+<!ELEMENT Titulos (#PCDATA)>
+<!ELEMENT Entrenador (#PCDATA)>
+<!ELEMENT Presidente (#PCDATA)>
+]>
