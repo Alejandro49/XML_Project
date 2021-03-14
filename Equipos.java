@@ -2,6 +2,14 @@ package pojos;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
+
 @XmlRootElement(name = "equipos")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Equipos implements Serializable {
@@ -72,6 +80,11 @@ public class Equipos implements Serializable {
 	 public void setPresidente(String presidente) {
 	         this.presidente = presidente;
 	 }
-
+     
+      @Override
+        public String toString() {
+                return "Equipos [pais=" + pais + ", equipo=" + equipo + ", titulos=" + titulos + ", entrenador="
+                                + entrenador + ", presidente=" + presidente + "]";
+        }
 
 }
