@@ -19,10 +19,10 @@ public class TestXML_simple {
                 e.setPais("Alemania");
                 e.setEntrenador("Hans-Dieter Flick");
                 e.setPresidente("Herbert Hainer");
-                e.setTitulos("68");
+                e.setTitulos("78");
                
-                marshalling(e);
-                //unMarshalling();
+                //marshalling(e);
+                unMarshalling();
         }
 
         private static void marshalling(Equipo e) throws JAXBException {
@@ -46,7 +46,7 @@ public class TestXML_simple {
                 // Creamos el JAXBMarshaller
                 Unmarshaller jaxbU = jaxbC.createUnmarshaller();
                 // Leyendo un fichero
-                File XMLfile = new File("./xml/Equipo_1.xml");
+                File XMLfile = new File("./xml/equipo_2.xml");
                 // Creando el objeto
                 Equipo e1 = (Equipo) jaxbU.unmarshal(XMLfile);
                 // Escribiendo por pantalla el objeto
