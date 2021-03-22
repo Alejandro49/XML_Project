@@ -70,13 +70,13 @@ public class Equipo  implements Serializable{
 	        return entrenador;
 	}
 	
-	public void setEntrenador(String pais) {
+	public void setEntrenador(String entrenador) {
 	        this.entrenador = entrenador;
 	}
 	
 	
 	 public String getPresidente() {
-	        return entrenador;
+	        return presidente;
 	}
 	
 	public void setPresidente(String presidente) {
