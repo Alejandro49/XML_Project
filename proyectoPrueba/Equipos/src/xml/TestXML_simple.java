@@ -19,7 +19,7 @@ public class TestXML_simple {
                 e.setPais("Alemania");
                 e.setEntrenador("Hans-Dieter Flick");
                 e.setPresidente("Herbert Hainer");
-                e.setTitulos("78");
+                e.setTitulos(78);
                
                 //marshalling(e);
                 unMarshalling();

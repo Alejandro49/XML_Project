@@ -22,7 +22,7 @@ public class Equipo  implements Serializable{
 	@XmlAttribute
 	private String pais;
 	@XmlElement
-	private String titulos;
+	private int titulos;
 	@XmlElement
 	private String entrenador;
 	@XmlElement
@@ -33,7 +33,7 @@ public class Equipo  implements Serializable{
 		super();
 	}
 	
-	public Equipo(String nombre, String pais, String titulos, String entrenador, String presidente) {
+	public Equipo(String nombre, String pais, int titulos, String entrenador, String presidente) {
 		super();
 		this.nombre = nombre;
 		this.pais = pais;
@@ -58,11 +58,11 @@ public class Equipo  implements Serializable{
 	        this.pais = pais;
 	}
 	
-	 public String getTitulos() {
+	 public int getTitulos() {
 	        return titulos;
 	}
 	
-	public void setTitulos(String titulos) {
+	public void setTitulos(int titulos) {
 	        this.titulos = titulos;
 	}
 	
