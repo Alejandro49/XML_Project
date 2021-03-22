@@ -21,7 +21,7 @@ public class TestXPath {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse("./xml/Equipos.xml"); //org.w3c.dom.Document
+        Document doc = builder.parse("./xml/equipos.xml"); //org.w3c.dom.Document
 
         //Crear XPath
         XPathFactory xpathfactory = XPathFactory.newInstance();
