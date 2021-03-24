@@ -1,0 +1,7 @@
+
+<!DOCTYPE Equipo SYSTEM "equipos.dtd">
+<Equipo nombre="Bayern de Múnich" pais="Alemania">
+    <titulos>78</titulos>
+    <entrenador>Hans-Dieter Flick</entrenador>
+    <presidente>Herbert Hainer</presidente>
+</Equipo>

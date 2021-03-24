@@ -16,7 +16,7 @@ public class EquiposDeFutbol implements Serializable{
 	private static final long serialVersionUID = -47891006084131330L;
 	
 	
-	@XmlElement(name = "Equipo")
+	@XmlElement(name = "equipo")
 	private ArrayList<Equipo> Equipo;
 	
 	public EquiposDeFutbol() {

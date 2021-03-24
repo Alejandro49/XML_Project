@@ -1,6 +1,6 @@
 <!ELEMENT Equipos (Equipo*)>
-<!ELEMENT Equipo (Titulos*, Entrenador, Presidente)>
+<!ELEMENT Equipo (titulos*, entrenador, presidente)>
 <!ATTLIST Equipo nombre CDATA #REQUIRED pais CDATA #REQUIRED>
-<!ELEMENT Titulos (#PCDATA)>
-<!ELEMENT Entrenador (#PCDATA)>
-<!ELEMENT Presidente (#PCDATA)>
+<!ELEMENT titulos (#PCDATA)>
+<!ELEMENT entrenador (#PCDATA)>
+<!ELEMENT presidente (#PCDATA)>

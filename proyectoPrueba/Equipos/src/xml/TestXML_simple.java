@@ -21,8 +21,8 @@ public class TestXML_simple {
                 e.setPresidente("Herbert Hainer");
                 e.setTitulos(78);
                
-                //marshalling(e);
-                unMarshalling();
+                marshalling(e);
+                //unMarshalling();
         }
 
         private static void marshalling(Equipo e) throws JAXBException {
@@ -33,7 +33,7 @@ public class TestXML_simple {
                 Marshaller jaxbM = jaxbC.createMarshaller();
                 // Formateo bonito
                 jaxbM.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
-                jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE empleado SYSTEM \"equipos.dtd\">");
+                jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Equipo SYSTEM \"equipos.dtd\">");
                 jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
                 // Escribiendo en un fichero
                 File XMLfile = new File("./xml/Equipo_1.xml");

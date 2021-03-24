@@ -1,13 +1,13 @@
 <!DOCTYPE Equipos SYSTEM "equipos.dtd">
 <Equipos>
 	<Equipo nombre="Real Madrid" pais="España">
-		<Titulos>92</Titulos>
-		<Entrenador>Zinedine Zidane</Entrenador>
-		<Presidente>Florentino Pérez</Presidente>
+		<titulos>92</titulos>
+		<entrenador>Zinedine Zidane</entrenador>
+		<presidente>Florentino Pérez</presidente>
 	</Equipo>
 	<Equipo nombre="Paris Saint-Germain" pais="Francia">
-		<Titulos>42</Titulos>
-		<Entrenador>Mauricio Pochettino</Entrenador>
-		<Presidente>Nasser Al-Khelaïfi</Presidente>
+		<titulos>42</titulos>
+		<entrenador>Mauricio Pochettino</entrenador>
+		<presidente>Nasser Al-Khelaïfi</presidente>
 	</Equipo>
 </Equipos>
