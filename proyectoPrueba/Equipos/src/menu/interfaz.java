@@ -1,6 +1,10 @@
 package menu;
 
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.xml.bind.JAXBException;
+
 import modelo.*;
 import xml.*;
 
@@ -30,7 +34,15 @@ public class interfaz {
 			
 			switch(opcion) {
 				case 1:System.out.println("Exportando archivo");
-				
+				try {
+					xml.TestXML_simple.main(args);
+				} catch (JAXBException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 				case 2:System.out.println("Introduzca el nombre del archivo que desea importar:");
 				       Scanner entradaArchivo = new Scanner(System.in);
