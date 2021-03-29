@@ -47,6 +47,7 @@ public class interfaz {
 				case 2:System.out.println("Introduzca el nombre del archivo que desea importar:");
 				       Scanner entradaArchivo = new Scanner(System.in);
 			           String nombreArchivo = entradaArchivo.nextLine();
+			           
 			           System.out.println("Importando "+nombreArchivo);
 				break;
 				case 3:System.out.println("Introduzca el nombre del equipo que desea exportar:");
