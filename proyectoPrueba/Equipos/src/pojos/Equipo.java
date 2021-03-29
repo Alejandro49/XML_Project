@@ -44,6 +44,28 @@ public class Equipo  implements Serializable{
 		this.entrenador = entrenador;
 		this.presidente = presidente;
 	}
+	
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if (obj instanceof Equipo) {
+			
+			Equipo equipo = (Equipo) obj;
+			
+			if (this.nombre.equals(equipo.getNombre())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+		
+	}
+	
+	
 
 	public String getNombre() {
         return nombre;
