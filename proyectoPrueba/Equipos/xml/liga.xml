@@ -1,5 +1,5 @@
-<!DOCTYPE Equipos SYSTEM "equipos.dtd">
-<Equipos>
+<!DOCTYPE Liga SYSTEM "liga.dtd">
+<Liga>
 	<Equipo nombre="Real Madrid" pais="España">
 		<titulos>92</titulos>
 		<entrenador>Zinedine Zidane</entrenador>
@@ -10,4 +10,4 @@
 		<entrenador>Mauricio Pochettino</entrenador>
 		<presidente>Nasser Al-Khelaïfi</presidente>
 	</Equipo>
-</Equipos>
+</Liga>

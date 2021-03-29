@@ -9,14 +9,14 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "Equipos")
+@XmlRootElement(name = "Liga")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Liga implements Serializable{
 
 	private static final long serialVersionUID = -47891006084131330L;
 	
 	
-	@XmlElement(name = "equipo")
+	@XmlElement(name = "Equipo")
 	private ArrayList<Equipo> Equipo;
 	
 	public Liga() {

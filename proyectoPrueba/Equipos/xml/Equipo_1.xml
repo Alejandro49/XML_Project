@@ -1,5 +1,5 @@
 
-<!DOCTYPE Equipo SYSTEM "equipos.dtd">
+<!DOCTYPE Equipo SYSTEM "liga.dtd">
 <Equipo nombre="Bayern de Múnich" pais="Alemania">
     <titulos>78</titulos>
     <entrenador>Hans-Dieter Flick</entrenador>

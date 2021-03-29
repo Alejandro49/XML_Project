@@ -1,4 +1,4 @@
-<!ELEMENT Equipos (Equipo*)>
+<!ELEMENT Liga (Equipo*)>
 <!ELEMENT Equipo (titulos*, entrenador, presidente)>
 <!ATTLIST Equipo nombre CDATA #REQUIRED pais CDATA #REQUIRED>
 <!ELEMENT titulos (#PCDATA)>

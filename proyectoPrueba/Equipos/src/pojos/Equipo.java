@@ -23,10 +23,13 @@ public class Equipo  implements Serializable{
 	private String pais;
 	@XmlElement
 	private int titulos;
-	@XmlElement
+	@XmlElement 
 	private String entrenador;
 	@XmlElement
 	private String presidente;
+	
+	@XmlTransient
+	private Liga liga;
 	
 	
 	public Equipo() {
