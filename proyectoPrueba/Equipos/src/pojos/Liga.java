@@ -1,4 +1,4 @@
-package modelo;
+package pojos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "EquiposDeFutbol")
+@XmlRootElement(name = "Equipos")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class EquiposDeFutbol implements Serializable{
+public class Liga implements Serializable{
 
 	private static final long serialVersionUID = -47891006084131330L;
 	
@@ -19,7 +19,7 @@ public class EquiposDeFutbol implements Serializable{
 	@XmlElement(name = "equipo")
 	private ArrayList<Equipo> Equipo;
 	
-	public EquiposDeFutbol() {
+	public Liga() {
 		super();
 		Equipo = new ArrayList<>();
 	}

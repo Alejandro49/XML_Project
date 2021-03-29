@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 import javax.xml.bind.JAXBException;
 
-import modelo.*;
-import xml.*;
-
 public class interfaz {
 	
 	

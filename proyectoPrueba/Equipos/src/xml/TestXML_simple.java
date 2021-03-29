@@ -9,8 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-
-import modelo.*;
+import pojos.*;
 
 public class TestXML_simple {
         public static void main(String[] args) throws JAXBException, IOException {
