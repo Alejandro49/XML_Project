@@ -23,14 +23,7 @@ public class Liga implements Serializable{
 		super();
 		liga = new ArrayList<>();
 	}
-
-	public ArrayList<Equipo> getLiga() {
-		return liga;
-	}
-
-	public void setLiga(ArrayList<Equipo> liga) {
-		this.liga = liga;
-	}
+	
 	
 	public void addEquipo(Equipo e) {
 		if(!liga.contains(e))
@@ -39,5 +32,32 @@ public class Liga implements Serializable{
 	
 	public void removeEquipo(Equipo e) {
 		liga.remove(e);
+	}
+	
+	public void mostrarLiga() {
+		if (liga == null || liga.isEmpty()) {
+			System.out.println("Liga vacía, debes importarla primero");
+			esperar(2);
+		}
+		for (Equipo equipo: liga) {
+			esperar(1);
+			System.out.println(equipo);
+		}
+	}
+	
+	public static void esperar(int segundos){
+        try {
+            Thread.sleep(segundos * 1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+    }   
+	
+	public ArrayList<Equipo> getLiga() {
+		return liga;
+	}
+
+	public void setLiga(ArrayList<Equipo> liga) {
+		this.liga = liga;
 	}
 }

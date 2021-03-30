@@ -11,7 +11,9 @@ import pojos.Liga;
 
 public class LigaXML {
 	
-	public Liga importarLiga() throws JAXBException {
+	private Liga liga;
+	
+	public void importarLiga() throws JAXBException {
 		//unMarshalling()
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
@@ -20,10 +22,19 @@ public class LigaXML {
 		// Leyendo un fichero
 		File XMLfile = new File("./xml/liga.xml");
 		// Creando el objeto
-		Liga liga = (Liga) jaxbU.unmarshal(XMLfile);
+		liga = (Liga) jaxbU.unmarshal(XMLfile);
 		// Escribiendo por pantalla el objeto
+	}
+
+	public Liga getLiga() {
 		return liga;
 	}
+
+	public void setLiga(Liga liga) {
+		this.liga = liga;
+	}
+	
+	
 	
 	
 
