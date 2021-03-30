@@ -12,8 +12,10 @@ public class interfaz {
 	
 	public static void main(String[] args) {
 		
-		System.out.println("1.- Exportar todos los equipos de futbol");
-		System.out.println("2.- Importar todos los equipos de futbol");
+
+		System.out.println("¿Que desea hacer?");
+		System.out.println("1.- Importar liga");
+		System.out.println("2.- Exportar liga");
 		System.out.println("3.- Elegir un equipo y exportarlo");
 		System.out.println("4.- Importar un único equipo");
 		System.out.println("5.- Validar un archivo XML de un equipo");
@@ -28,7 +30,7 @@ public class interfaz {
 	    System.out.println("Elige una opcion:");
 	    try (Scanner in = new Scanner(System.in)) {
 			int opcion = in.nextInt();
-			System.out.println("Elegida opción "+opcion);
+			System.out.println("Elegida opción " + opcion);
 			
 			switch(opcion) {
 				case 1:
@@ -90,6 +92,8 @@ public class interfaz {
 			}
 		}
 	}
+	
+	
 
 }
 
