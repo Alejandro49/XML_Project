@@ -70,7 +70,7 @@ public class interfaz {
 				case 10:
 						Scanner lecturaConsola = new Scanner(System.in);
 						System.out.println("Introduce nombre del equipo:");
-						String equipo =  lecturaConsola.nextLine();
+						String nombre =  lecturaConsola.nextLine();
 						System.out.println("Introduce nombre del pais:");
 						String pais =  lecturaConsola.nextLine();
 						System.out.println("Introduce el número de títulos del equipo:");
@@ -79,6 +79,8 @@ public class interfaz {
 						String entrenador =  lecturaConsola.nextLine();
 						System.out.println("Introduce nombre del presidente del equipo:");
 						String presidente =  lecturaConsola.nextLine();
+						Equipo equipoGenerado = new Equipo(nombre,pais,titulos,entrenador,presidente);
+					    // aqui se debería de añadir el quipo metido por consola a la lista de equipos
 						break;
 				case 11:;
 				break;
