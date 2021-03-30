@@ -2,6 +2,7 @@ package menu;
 
 import java.io.IOException;
 import java.util.Scanner;
+import pojos.*;
 
 import javax.xml.bind.JAXBException;
 
@@ -14,7 +15,7 @@ public class interfaz {
 		System.out.println("1.- Exportar todos los equipos de futbol");
 		System.out.println("2.- Importar todos los equipos de futbol");
 		System.out.println("3.- Elegir un equipo y exportarlo");
-		System.out.println("4.- Importar un equipo");
+		System.out.println("4.- Importar un único equipo");
 		System.out.println("5.- Validar un archivo XML de un equipo");
 		System.out.println("6.- Escribir una sentencia XPath y ejecutarla");
 		System.out.println("7.- Escoger sentencias XPath predefinas");
@@ -30,39 +31,55 @@ public class interfaz {
 			System.out.println("Elegida opción "+opcion);
 			
 			switch(opcion) {
-				case 1:System.out.println("Exportando archivo");
-				try {
-					xml.TestXML_simple.main(args);
-				} catch (JAXBException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				case 1:
+					   System.out.println("Exportando archivo");
+					   try {
+							xml.TestXML_simple.main(args);
+					   } catch (JAXBException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+					   } catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+					   }
 				break;
-				case 2:System.out.println("Introduzca el nombre del archivo que desea importar:");
+				case 2:
+					   System.out.println("Introduzca el nombre del archivo que desea importar:");
 				       Scanner entradaArchivo = new Scanner(System.in);
 			           String nombreArchivo = entradaArchivo.nextLine();
 			           
 			           System.out.println("Importando "+nombreArchivo);
 				break;
-				case 3:System.out.println("Introduzca el nombre del equipo que desea exportar:");
-				break;
-				case 4:;
-				break;
-				case 5:;
-				break;
+				case 3:
+					   System.out.println("Introduzca el nombre del equipo que desea exportar:");
+					   break;
+				case 4:
+					   System.out.println("Introduzca el nombre del equipo que desea importar:");
+				       break;
+				case 5:
+					   System.out.println("Introduzca el nombre del archivo XML que desea validar:");
+				       break;
 				case 6:;
-				break;
+					   break;
 				case 7:;
-				break;
+					   break;
 				case 8:;
-				break;
+					   break;
 				case 9:;
-				break;
-				case 10:;
-				break;
+					   break;
+				case 10:
+						Scanner lecturaConsola = new Scanner(System.in);
+						System.out.println("Introduce nombre del equipo:");
+						String equipo =  lecturaConsola.nextLine();
+						System.out.println("Introduce nombre del pais:");
+						String pais =  lecturaConsola.nextLine();
+						System.out.println("Introduce el número de títulos del equipo:");
+						int titulos =  lecturaConsola.nextInt();
+						System.out.println("Introduce nombre del entrenador del equipo:");
+						String entrenador =  lecturaConsola.nextLine();
+						System.out.println("Introduce nombre del presidente del equipo:");
+						String presidente =  lecturaConsola.nextLine();
+						break;
 				case 11:;
 				break;
 				case 12:;
