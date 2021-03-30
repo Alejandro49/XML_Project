@@ -17,27 +17,27 @@ public class Liga implements Serializable{
 	
 	
 	@XmlElement(name = "Equipo")
-	private ArrayList<Equipo> Equipo;
+	private ArrayList<Equipo> liga;
 	
 	public Liga() {
 		super();
-		Equipo = new ArrayList<>();
+		liga = new ArrayList<>();
 	}
 
-	public ArrayList<Equipo> getEquipo() {
-		return Equipo;
+	public ArrayList<Equipo> getLiga() {
+		return liga;
 	}
 
-	public void setEquipo(ArrayList<Equipo> Equipo) {
-		this.Equipo = Equipo;
+	public void setLiga(ArrayList<Equipo> liga) {
+		this.liga = liga;
 	}
 	
 	public void addEquipo(Equipo e) {
-		if(!Equipo.contains(e))
-			Equipo.add(e);
+		if(!liga.contains(e))
+			liga.add(e);
 	}
 	
 	public void removeEquipo(Equipo e) {
-		Equipo.remove(e);
+		liga.remove(e);
 	}
 }
