@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Liga>
-	<Equipo nombre="Real Madrid" pais="España">
-		<titulos>92</titulos>
-		<entrenador>Zinedine Zidane</entrenador>
-		<presidente>Florentino Pérez</presidente>
-	</Equipo>
-	<Equipo nombre="Paris Saint-Germain" pais="Francia">
-		<titulos>42</titulos>
-		<entrenador>Mauricio Pochettino</entrenador>
-		<presidente>Nasser Al-Khelaïfi</presidente>
-	</Equipo>
+    <Equipo nombre="Real Madrid" pais="España">
+        <titulos>92</titulos>
+        <entrenador>Zinedine Zidane</entrenador>
+        <presidente>Florentino Pérez</presidente>
+    </Equipo>
+    <Equipo nombre="Paris Saint-Germain" pais="Francia">
+        <titulos>42</titulos>
+        <entrenador>Mauricio Pochettino</entrenador>
+        <presidente>Nasser Al-Khelaïfi</presidente>
+    </Equipo>
 </Liga>

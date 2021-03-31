@@ -34,10 +34,10 @@ public class PanelControl {
 			    opcion = reader.nextInt();
 			    ejecutarOpcion(opcion);
 			  } catch (InputMismatchException ime){
-			    System.out.println("¡Cuidado! Solo puedes insertar números. ");
+			    System.out.println("¡Cuidado! Solo puedes insertar números enteros. ");
 			    reader.next();
 			  }
-			} while (opcion!=0);
+			} while (opcion>0 && opcion<13);
 		
 	}
 	
@@ -45,20 +45,34 @@ public class PanelControl {
 		
 		switch(opcion) {
 		case 1:
-			   System.out.println("Importando liga...");
+			   System.out.println("Importando liga del archivo ./xml/liga.xml");
 			   try {
 				ligaXML.importarLiga();
 				System.out.println("Liga importada con éxito");
 				System.out.println("Elija la opción 3 para ver los equipos que conforman la liga");
 				esperar(2);
-			} catch (JAXBException e) {
+			   } catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("Se ha producido un error inesperado");
 				esperar(1);
-			}		   
+			   }		   
 		break;
 		case 2:
+			System.out.println("Exportando liga al archivo ./xml/liga.xml");
+			try {
+				ligaXML.exportarLiga(ligaXML.getLiga());
+				System.out.println("Liga exportada con éxito");
+				esperar(2);
+			   } catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Se ha producido un error inesperado");
+				esperar(1);
+			   } catch (IllegalArgumentException e) {
+				   System.out.println("Liga actualmente inexistente, importala primero, o añade equipos por consola");
+				   esperar(2);
+			   }
 			   
 		break;
 		
