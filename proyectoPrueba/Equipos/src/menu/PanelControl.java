@@ -8,12 +8,14 @@ import javax.xml.bind.JAXBException;
 
 import com.sun.tools.javac.Main;
 
+import pojos.Equipo;
 import pojos.Liga;
 import xml.LigaXML;
 
 public class PanelControl {
 	
 	LigaXML ligaXML = new LigaXML();
+
 	Scanner reader;
 	
 	public void cargarPanel() {
@@ -21,7 +23,8 @@ public class PanelControl {
 		System.out.println("¿Que desea hacer?");
 		System.out.println("1.- Importar liga");
 		System.out.println("2.- Exportar liga");
-		System.out.println("3.- Mostrar equipos de la liga");
+		System.out.println("3.- Crear liga");
+		System.out.println("4.- Mostrar equipos de la liga");
 		System.out.println("12.- Salir");
 		System.out.println();
 		System.out.println("Escriba el número de la opción que quiere ejecutar");
@@ -44,7 +47,7 @@ public class PanelControl {
 	public void ejecutarOpcion(int opcion) {
 		
 		switch(opcion) {
-		case 1:
+		case 1: //Importar liga
 			   System.out.println("Importando liga del archivo ./xml/liga.xml");
 			   try {
 				ligaXML.importarLiga();
@@ -58,7 +61,7 @@ public class PanelControl {
 				esperar(1);
 			   }		   
 		break;
-		case 2:
+		case 2: // Exportar liga
 			System.out.println("Exportando liga al archivo ./xml/liga.xml");
 			try {
 				ligaXML.exportarLiga(ligaXML.getLiga());
@@ -76,13 +79,52 @@ public class PanelControl {
 			   
 		break;
 		
-		case 3:
+		case 3: //Crear liga
+			Liga liga = new Liga(); //liga vacía inicialmente
+			System.out.println("Inserte los equipos de forma manual");
+			esperar(2);
+			Scanner lectorEquipos;
+			String respuesta = "";
+			do {
+				System.out.println("Introduzca los datos del nuevo equipo:");
+				lectorEquipos = new Scanner(System.in);
+				System.out.println("Introduce nombre del equipo:");
+				String nombre =  lectorEquipos.nextLine();
+				System.out.println("Introduce nombre del pais:");
+				String pais =  lectorEquipos.nextLine();
+				System.out.println("Introduce el número de títulos del equipo:");
+				int titulos =  lectorEquipos.nextInt();
+				System.out.println("Introduce nombre del entrenador del equipo:");
+				String entrenador =  lectorEquipos.nextLine();
+				System.out.println("Introduce nombre del presidente del equipo:");
+				String presidente =  lectorEquipos.nextLine();
+				Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
+				System.out.println("Equipo que acabas de crear:");
+				System.out.println(equipoCreado);
+				esperar(3);
+				System.out.println("Pulse ok para añadirlo a la liga");
+				String confirmacion = lectorEquipos.nextLine();
+				if (confirmacion == "ok") {
+					liga.addEquipo(equipoCreado);
+					System.out.println("Equipo añadido a la liga");
+				}
+				System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir añadiendo equipos ");
+				respuesta = lectorEquipos.nextLine();
+			} while (respuesta != "no");
+			lectorEquipos.close();
+			System.out.println("Creacion de la liga completada");
+			esperar(2);
+			ligaXML.setLiga(liga);
+			
+		break;
+		
+		case 4: // Mostrar equipos
 			System.out.println("Mostrando los equipos de la liga:");
 			esperar(2);
 			try {
 				ligaXML.getLiga().mostrarLiga();
 			} catch (NullPointerException e) {
-				System.out.println("Liga vacía, debes importarla primero");
+				System.out.println("Liga vacía, debes importarla o crearla primero");
 				esperar(2);
 			}
 		break;
