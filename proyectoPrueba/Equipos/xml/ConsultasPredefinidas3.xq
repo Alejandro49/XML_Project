@@ -1,3 +1,3 @@
-for $x in doc("liga.xml")/Liga/Equipo
+for $x in doc("ligaConsultas.xml")/Liga/Equipo
 where ($x/@pais="Francia")
 return $x/entrenador
