@@ -142,6 +142,8 @@ public class PanelControl {
 			else if (opcionXQuery == 2) {
 				System.out.println("Escoge una consulta predefinida");
 				System.out.println("1- Mostrar todos los equipos ordenados por número de títulos ganados");
+				System.out.println("2- Nombre del presidente del Real Madrid");
+				System.out.println("3- Todos los entrenadores de Francia");
 			}
 			break;
 		case 12:
