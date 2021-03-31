@@ -25,6 +25,7 @@ public class PanelControl {
 		System.out.println("2.- Exportar liga");
 		System.out.println("3.- Crear liga");
 		System.out.println("4.- Mostrar equipos de la liga");
+		System.out.println("8.- Consulta XQuery");
 		System.out.println("12.- Salir");
 		System.out.println();
 		System.out.println("Escriba el número de la opción que quiere ejecutar");
@@ -128,6 +129,21 @@ public class PanelControl {
 				esperar(2);
 			}
 		break;
+		case 8: // Consulta XQuery
+			System.out.println("Elija una opción a continuación");
+			System.out.println("1- Usar un documento xquery para hacer una consulta");
+			System.out.println("2- Usar una consulta xquery predefinida");
+			Scanner lecturaXQuery = new Scanner(System.in);
+			int opcionXQuery = lecturaXQuery.nextInt();
+			esperar(1);
+			if (opcionXQuery == 1) {
+				
+			}
+			else if (opcionXQuery == 2) {
+				System.out.println("Escoge una consulta predefinida");
+				System.out.println("1- Mostrar todos los equipos ordenados por número de títulos ganados");
+			}
+			break;
 		case 12:
 			System.exit(0);
 		break;
