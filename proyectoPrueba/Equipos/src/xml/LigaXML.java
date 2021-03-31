@@ -35,6 +35,8 @@ public class LigaXML {
 		Marshaller jaxbM = jaxbC.createMarshaller();
 		// Formateo bonito
 		jaxbM.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+		jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
+        jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		// Escribiendo en un fichero
 		File XMLfile = new File("./xml/liga.xml");
 		jaxbM.marshal(liga, XMLfile);
