@@ -64,41 +64,8 @@ public class PanelControl {
 			marshall();
 		break;
 		case 3: //Crear liga
-			Liga liga = new Liga(); //liga vacía inicialmente
-			System.out.println("Inserte los equipos de forma manual");
-			esperar(2);
-			String respuesta = "";
-			do {
-				sc2 = new Scanner(System.in);
-				System.out.println("Introduzca los datos del nuevo equipo:");
-				System.out.println("Introduce nombre del equipo:");
-				String nombre =  sc2.nextLine();
-				System.out.println("Introduce nombre del pais:");
-				String pais =  sc2.nextLine();
-				int titulos = titulosEquipo();
-				System.out.println("Introduce nombre del entrenador del equipo:");
-				String entrenador =  sc2.nextLine();
-				System.out.println("Introduce nombre del presidente del equipo:");
-				String presidente =  sc2.nextLine();
-				Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
-				System.out.println("Equipo que acabas de crear:");
-				System.out.println(equipoCreado);
-				esperar(3);
-				System.out.println("Pulse ok para añadirlo a la liga");
-				String confirmacion = sc2.nextLine();
-				if (confirmacion.equals("ok")) {
-					liga.addEquipo(equipoCreado);
-					System.out.println("Equipo añadido a la liga");
-				}
-				System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir añadiendo equipos ");
-				respuesta = sc2.nextLine();
-			} while (respuesta.equals("no") == false);
-			System.out.println("Creacion de la liga completada");
-			esperar(2);
-			ligaXML.setLiga(liga);
-			
+			crearLiga();
 		break;
-		
 		case 4: // Mostrar equipos
 			System.out.println("Mostrando los equipos de la liga:");
 			esperar(2);
@@ -110,11 +77,7 @@ public class PanelControl {
 			}
 		break;
 		case 5:
-			sc3 = new Scanner(System.in);
-			System.out.println("Introduzca el nombre del fichero a importar (debe de estar dentro de ./xml/Nombre_Fichero.xml");
-			String nombreFichero = sc3.nextLine();
-			
-			
+			unMarhallEquipo();
 		break;
 		case 8: // Consulta XQuery
 			System.out.println("Elija una opción a continuación");
@@ -140,6 +103,69 @@ public class PanelControl {
 		
 		cargarPanel();
 		
+	}
+
+	private void crearLiga() {
+		Liga liga = new Liga(); //liga vacía inicialmente
+		System.out.println("Inserte los equipos de forma manual");
+		esperar(2);
+		String respuesta = "";
+		do {
+			sc2 = new Scanner(System.in);
+			System.out.println("Introduzca los datos del nuevo equipo:");
+			System.out.println("Introduce nombre del equipo:");
+			String nombre =  sc2.nextLine();
+			System.out.println("Introduce nombre del pais:");
+			String pais =  sc2.nextLine();
+			int titulos = titulosEquipo();
+			System.out.println("Introduce nombre del entrenador del equipo:");
+			String entrenador =  sc2.nextLine();
+			System.out.println("Introduce nombre del presidente del equipo:");
+			String presidente =  sc2.nextLine();
+			Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
+			System.out.println("Equipo que acabas de crear:");
+			System.out.println(equipoCreado);
+			esperar(3);
+			System.out.println("Pulse ok para añadirlo a la liga");
+			String confirmacion = sc2.nextLine();
+			if (confirmacion.equals("ok")) {
+				liga.addEquipo(equipoCreado);
+				System.out.println("Equipo añadido a la liga");
+			}
+			System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir añadiendo equipos ");
+			respuesta = sc2.nextLine();
+		} while (respuesta.equals("no") == false);
+		System.out.println("Creacion de la liga completada");
+		esperar(2);
+		ligaXML.setLiga(liga);
+	}
+
+	private boolean unMarhallEquipo() {
+		Equipo equipo = new Equipo();
+		sc3 = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del fichero a importar (debe de estar dentro de ./xml/Nombre_Fichero.xml");
+		String nombreFichero = sc3.nextLine();
+		try {
+			equipo = ligaXML.importarEquipo(nombreFichero);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+			System.out.println("Se ha producido un error inesperado");
+			return false;
+		} catch (IllegalArgumentException ex) {
+			System.out.println("No se ha encontrado el archivo");
+			esperar(2);
+			return false;
+		}
+		if (ligaXML.getLiga() == null) {
+			Liga liga2 = new Liga();
+			liga2.addEquipo(equipo);
+			ligaXML.setLiga(liga2);
+		} else { 
+			ligaXML.getLiga().addEquipo(equipo);
+		}
+		System.out.println("Se ha importado el equipo correctamente, seleccione la opcion mostrar para verlo");
+		esperar(2);
+		return true;
 	}
 
 	private void marshall() {
