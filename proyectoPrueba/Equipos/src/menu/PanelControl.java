@@ -19,14 +19,17 @@ public class PanelControl {
 	
 	Scanner sc1;
 	Scanner sc2;
+	Scanner sc3;
 	
-	public void cargarPanel() {
+	public void cargarPanel() { //sc1
 		
 		System.out.println("¿Que desea hacer?");
 		System.out.println("1.- Importar liga");
 		System.out.println("2.- Exportar liga");
 		System.out.println("3.- Crear liga");
 		System.out.println("4.- Mostrar equipos de la liga");
+		System.out.println("5.- Importar Equipo desde xml");
+		System.out.println("6.- Exportar equipo a xml");
 		System.out.println("8.- Consulta XQuery");
 		System.out.println("12.- Salir");
 		System.out.println();
@@ -51,7 +54,7 @@ public class PanelControl {
 		
 	}
 	
-	public void ejecutarOpcion(int opcion) {
+	public void ejecutarOpcion(int opcion) { //sc2
 		
 		switch(opcion) {
 		case 1: //Importar liga
@@ -60,7 +63,6 @@ public class PanelControl {
 		case 2: // Exportar liga
 			marshall();
 		break;
-		
 		case 3: //Crear liga
 			Liga liga = new Liga(); //liga vacía inicialmente
 			System.out.println("Inserte los equipos de forma manual");
@@ -106,6 +108,13 @@ public class PanelControl {
 				System.out.println("Liga vacía, debes importarla o crearla primero");
 				esperar(2);
 			}
+		break;
+		case 5:
+			sc3 = new Scanner(System.in);
+			System.out.println("Introduzca el nombre del fichero a importar (debe de estar dentro de ./xml/Nombre_Fichero.xml");
+			String nombreFichero = sc3.nextLine();
+			
+			
 		break;
 		case 8: // Consulta XQuery
 			System.out.println("Elija una opción a continuación");

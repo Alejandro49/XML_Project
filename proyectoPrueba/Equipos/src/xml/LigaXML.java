@@ -7,12 +7,14 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import pojos.Equipo;
 import pojos.Liga;
 
 
 public class LigaXML {
 	
 	private Liga liga;
+	private Equipo equipo;
 	
 	public void importarLiga() throws JAXBException {
 		//unMarshalling()
@@ -41,6 +43,15 @@ public class LigaXML {
 		File XMLfile = new File("./xml/ligaExportada.xml");
 		jaxbM.marshal(liga, XMLfile);
 
+	}
+	
+	public Equipo importarEquipo(String nombreFichero) throws JAXBException {
+		String ruta = "./xml/" + nombreFichero;
+		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
+		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
+		File XMLfile = new File(ruta);
+		Equipo equipo = (Equipo) jaxbU.unmarshal(XMLfile);
+		return equipo;
 	}
 
 	public Liga getLiga() {
