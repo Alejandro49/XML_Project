@@ -36,7 +36,7 @@ public class Liga implements Serializable{
 	
 	public void mostrarLiga() {
 		if (liga == null || liga.isEmpty()) {
-			System.out.println("Liga vacía, debes importarla primero");
+			System.out.println("Liga vacía, debes importarla o crearla primero");
 			esperar(2);
 		}
 		for (Equipo equipo: liga) {

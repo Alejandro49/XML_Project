@@ -161,16 +161,19 @@ public class PanelControl {
 	
 	
 	private int titulosEquipo() {
-		int titulos = 0;
+		int titulos = -1;
 		Scanner lectorTitulos;
-		try {
-			lectorTitulos = new Scanner(System.in);
-			System.out.println("Introduce el nº de títulos del equipo: ");
-			titulos = lectorTitulos.nextInt();
-		} catch (InputMismatchException ime){
-		    System.out.println("¡Cuidado! Solo puedes insertar números enteros. ");
-		    titulosEquipo();
-		  }
+		do {
+			try {
+				lectorTitulos = new Scanner(System.in);
+				System.out.println("Introduce el nº de títulos del equipo: ");
+				titulos = lectorTitulos.nextInt();
+			} catch (InputMismatchException ime){
+				System.out.println("Debes introducir un numero entero carapan, no veas lo que cuesta gestionar excepciones...");
+				esperar(2);
+			}
+			
+		} while (titulos<0);
 		
 		return titulos;
 	}
