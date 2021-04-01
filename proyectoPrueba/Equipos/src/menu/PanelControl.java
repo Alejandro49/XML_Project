@@ -55,35 +55,10 @@ public class PanelControl {
 		
 		switch(opcion) {
 		case 1: //Importar liga
-			   System.out.println("Importando liga del archivo ./xml/liga.xml");
-			   try {
-				ligaXML.importarLiga();
-				System.out.println("Liga importada con éxito");
-				System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
-				esperar(2);
-			   } catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("Se ha producido un error inesperado");
-				esperar(1);
-			   }		   
+			unMarshall();		   
 		break;
 		case 2: // Exportar liga
-			System.out.println("Exportando liga al archivo ./xml/liga.xml");
-			try {
-				ligaXML.exportarLiga(ligaXML.getLiga());
-				System.out.println("Liga exportada con éxito");
-				esperar(2);
-			   } catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				System.out.println("Se ha producido un error inesperado");
-				esperar(1);
-			   } catch (IllegalArgumentException e) {
-				   System.out.println("Liga actualmente inexistente, importala primero, o añade equipos por consola");
-				   esperar(2);
-			   }
-			   
+			marshall();
 		break;
 		
 		case 3: //Crear liga
@@ -156,6 +131,40 @@ public class PanelControl {
 		
 		cargarPanel();
 		
+	}
+
+	private void marshall() {
+		System.out.println("Exportando liga al archivo ./xml/ligaExportada.xml");
+		try {
+			ligaXML.exportarLiga(ligaXML.getLiga());
+			System.out.println("Liga exportada con éxito");
+			esperar(2);
+		   } catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Se ha producido un error inesperado");
+			esperar(1);
+		   } catch (IllegalArgumentException e) {
+			   System.out.println("Liga actualmente inexistente, importala primero, o añade equipos por consola");
+			   esperar(2);
+		   }
+	}
+	
+	
+
+	private void unMarshall() {
+		System.out.println("Importando liga del archivo ./xml/liga.xml");
+		   try {
+			ligaXML.importarLiga();
+			System.out.println("Liga importada con éxito");
+			System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
+			esperar(2);
+		   } catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Se ha producido un error inesperado");
+			esperar(1);
+		   }
 	}
 	
 	

@@ -1,4 +1,5 @@
 
+<!DOCTYPE Liga SYSTEM "liga.dtd">
 <Liga>
     <Equipo nombre="Real Madrid" pais="España">
         <titulos>92</titulos>

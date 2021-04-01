@@ -38,7 +38,7 @@ public class LigaXML {
 		jaxbM.setProperty("com.sun.xml.bind.xmlHeaders", "\n<!DOCTYPE Liga SYSTEM \"liga.dtd\">");
         jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
 		// Escribiendo en un fichero
-		File XMLfile = new File("./xml/liga.xml");
+		File XMLfile = new File("./xml/ligaExportada.xml");
 		jaxbM.marshal(liga, XMLfile);
 
 	}
