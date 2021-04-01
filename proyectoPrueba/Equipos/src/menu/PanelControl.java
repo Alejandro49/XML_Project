@@ -91,8 +91,6 @@ public class PanelControl {
 			System.out.println("Inserte los equipos de forma manual");
 			esperar(2);
 			String respuesta = "";
-			Scanner sc2;
-			Scanner sc3;
 			do {
 				sc2 = new Scanner(System.in);
 				System.out.println("Introduzca los datos del nuevo equipo:");
@@ -102,24 +100,21 @@ public class PanelControl {
 				String pais =  sc2.nextLine();
 				int titulos = titulosEquipo();
 				System.out.println("Introduce nombre del entrenador del equipo:");
-				sc2.close();
-				sc3 = new Scanner(System.in);
-				String entrenador =  sc3.nextLine();
+				String entrenador =  sc2.nextLine();
 				System.out.println("Introduce nombre del presidente del equipo:");
-				String presidente =  sc3.nextLine();
+				String presidente =  sc2.nextLine();
 				Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
 				System.out.println("Equipo que acabas de crear:");
 				System.out.println(equipoCreado);
 				esperar(3);
 				System.out.println("Pulse ok para añadirlo a la liga");
-				String confirmacion = sc3.nextLine();
+				String confirmacion = sc2.nextLine();
 				if (confirmacion.equals("ok")) {
 					liga.addEquipo(equipoCreado);
 					System.out.println("Equipo añadido a la liga");
 				}
 				System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir añadiendo equipos ");
-				respuesta = sc3.nextLine();
-				sc3.close();
+				respuesta = sc2.nextLine();
 			} while (respuesta.equals("no") == false);
 			System.out.println("Creacion de la liga completada");
 			esperar(2);
@@ -167,16 +162,16 @@ public class PanelControl {
 	
 	private int titulosEquipo() {
 		int titulos = 0;
-		Scanner lectorTitulos = new Scanner(System.in);
+		Scanner lectorTitulos;
 		try {
+			lectorTitulos = new Scanner(System.in);
 			System.out.println("Introduce el nº de títulos del equipo: ");
 			titulos = lectorTitulos.nextInt();
-			lectorTitulos.nextLine();
 		} catch (InputMismatchException ime){
 		    System.out.println("¡Cuidado! Solo puedes insertar números enteros. ");
 		    titulosEquipo();
 		  }
-		lectorTitulos.close();
+		
 		return titulos;
 	}
 
