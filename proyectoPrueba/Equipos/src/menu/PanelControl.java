@@ -2,6 +2,7 @@ package menu;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import javax.xml.bind.JAXBException;
@@ -15,8 +16,9 @@ import xml.LigaXML;
 public class PanelControl {
 	
 	LigaXML ligaXML = new LigaXML();
-
-	Scanner reader;
+	
+	Scanner sc1;
+	Scanner sc2;
 	
 	public void cargarPanel() {
 		
@@ -31,17 +33,21 @@ public class PanelControl {
 		System.out.println("Escriba el número de la opción que quiere ejecutar");
 		
 		int opcion = 0;
+		try {
+			sc1 = new Scanner(System.in);
+			opcion = sc1.nextInt();
+			
+		} catch (InputMismatchException ime){
+			System.out.println("Debes introducir un número entero. Vuelve a intentarlo");
+			esperar(2);
+		}
 		
-		do {			
-			  try {
-				reader = new Scanner(System.in);
-			    opcion = reader.nextInt();
-			    ejecutarOpcion(opcion);
-			  } catch (InputMismatchException ime){
-			    System.out.println("¡Cuidado! Solo puedes insertar números enteros. ");
-			    reader.next();
-			  }
-			} while (opcion>0 && opcion<13);
+		if (opcion>0 && opcion<13) {
+			ejecutarOpcion(opcion);
+		} else {
+			System.out.println("Opción incorrecta. Vuelva a intentarlo");
+			cargarPanel();
+		}
 		
 	}
 	
@@ -53,7 +59,7 @@ public class PanelControl {
 			   try {
 				ligaXML.importarLiga();
 				System.out.println("Liga importada con éxito");
-				System.out.println("Elija la opción 3 para ver los equipos que conforman la liga");
+				System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
 				esperar(2);
 			   } catch (JAXBException e) {
 				// TODO Auto-generated catch block
@@ -84,35 +90,37 @@ public class PanelControl {
 			Liga liga = new Liga(); //liga vacía inicialmente
 			System.out.println("Inserte los equipos de forma manual");
 			esperar(2);
-			Scanner lectorEquipos;
 			String respuesta = "";
+			Scanner sc2;
+			Scanner sc3;
 			do {
+				sc2 = new Scanner(System.in);
 				System.out.println("Introduzca los datos del nuevo equipo:");
-				lectorEquipos = new Scanner(System.in);
 				System.out.println("Introduce nombre del equipo:");
-				String nombre =  lectorEquipos.nextLine();
+				String nombre =  sc2.nextLine();
 				System.out.println("Introduce nombre del pais:");
-				String pais =  lectorEquipos.nextLine();
-				System.out.println("Introduce el número de títulos del equipo:");
-				int titulos =  lectorEquipos.nextInt();
+				String pais =  sc2.nextLine();
+				int titulos = titulosEquipo();
 				System.out.println("Introduce nombre del entrenador del equipo:");
-				String entrenador =  lectorEquipos.nextLine();
+				sc2.close();
+				sc3 = new Scanner(System.in);
+				String entrenador =  sc3.nextLine();
 				System.out.println("Introduce nombre del presidente del equipo:");
-				String presidente =  lectorEquipos.nextLine();
+				String presidente =  sc3.nextLine();
 				Equipo equipoCreado = new Equipo(nombre,pais,titulos,entrenador,presidente);
 				System.out.println("Equipo que acabas de crear:");
 				System.out.println(equipoCreado);
 				esperar(3);
 				System.out.println("Pulse ok para añadirlo a la liga");
-				String confirmacion = lectorEquipos.nextLine();
-				if (confirmacion == "ok") {
+				String confirmacion = sc3.nextLine();
+				if (confirmacion.equals("ok")) {
 					liga.addEquipo(equipoCreado);
 					System.out.println("Equipo añadido a la liga");
 				}
 				System.out.println("Escriba \"no\" para finalizar la insercion de equipos o cualquier otra tecla para seguir añadiendo equipos ");
-				respuesta = lectorEquipos.nextLine();
-			} while (respuesta != "no");
-			lectorEquipos.close();
+				respuesta = sc3.nextLine();
+				sc3.close();
+			} while (respuesta.equals("no") == false);
 			System.out.println("Creacion de la liga completada");
 			esperar(2);
 			ligaXML.setLiga(liga);
@@ -157,6 +165,21 @@ public class PanelControl {
 	
 	
 	
+	private int titulosEquipo() {
+		int titulos = 0;
+		Scanner lectorTitulos = new Scanner(System.in);
+		try {
+			System.out.println("Introduce el nº de títulos del equipo: ");
+			titulos = lectorTitulos.nextInt();
+			lectorTitulos.nextLine();
+		} catch (InputMismatchException ime){
+		    System.out.println("¡Cuidado! Solo puedes insertar números enteros. ");
+		    titulosEquipo();
+		  }
+		lectorTitulos.close();
+		return titulos;
+	}
+
 	public static void esperar(int segundos){
         try {
             Thread.sleep(segundos * 1000);
