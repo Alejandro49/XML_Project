@@ -53,6 +53,7 @@ public class LigaXML {
 		Equipo equipo = (Equipo) jaxbU.unmarshal(XMLfile);
 		return equipo;
 	}
+	
 
 	public Liga getLiga() {
 		return liga;

@@ -20,6 +20,7 @@ public class PanelControl {
 	Scanner sc1;
 	Scanner sc2;
 	Scanner sc3;
+	Scanner sc4;
 	
 	public void cargarPanel() { //sc1
 		
@@ -76,8 +77,11 @@ public class PanelControl {
 				esperar(2);
 			}
 		break;
-		case 5:
+		case 5: 
 			unMarhallEquipo();
+		break;
+		case 6:
+			marshallEquipo();
 		break;
 		case 8: // Consulta XQuery
 			System.out.println("Elija una opción a continuación");
@@ -138,6 +142,13 @@ public class PanelControl {
 		System.out.println("Creacion de la liga completada");
 		esperar(2);
 		ligaXML.setLiga(liga);
+	}
+	
+	private void marshallEquipo() {
+		sc4 = new Scanner(System.in);
+		System.out.println("Introduzca el nombre exacto del equipo que quieres exportar");
+		String nombre = sc4.nextLine();
+		
 	}
 
 	private boolean unMarhallEquipo() {
@@ -200,6 +211,7 @@ public class PanelControl {
 			System.out.println("Se ha producido un error inesperado");
 			esperar(1);
 		   }
+		   
 	}
 	
 	
