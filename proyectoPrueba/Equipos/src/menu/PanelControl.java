@@ -25,6 +25,7 @@ public class PanelControl {
 	Scanner sc3;
 	Scanner sc4;
 	Scanner sc5;
+	Scanner sc6;
 	
 	public void cargarPanel() { //sc1
 		
@@ -92,8 +93,8 @@ public class PanelControl {
 				ligaXML.getLiga().leerEquipoDeTeclado();
 			}
 		break;
-		case 6:
-		
+		case 6: // Borrar equipo mediante su nombre // sc6
+			borrarEquipo();
 		break;
 		case 7: 
 			unMarhallEquipo();
@@ -128,6 +129,25 @@ public class PanelControl {
 		
 		cargarPanel();
 		
+	}
+
+	private void borrarEquipo() {
+		if (ligaXML.getLiga() == null) {
+			System.out.println("Liga inexistente.");
+			esperar(2);
+		} else {
+			sc6 = new Scanner(System.in);
+			System.out.println("Introduzca el nombre del equipo a borrar");
+			String nombre = sc6.nextLine();
+			boolean borrado = ligaXML.getLiga().removeEquipo(nombre);
+			if (borrado==true) {
+				System.out.println("Equipo eliminado correctamente");
+				esperar(2);
+			} else {
+				System.out.println("No existe un equipo con ese nombre en la liga");
+				esperar(2);
+			}
+		}
 	}
 
 	private void validarLigaConDTD() {

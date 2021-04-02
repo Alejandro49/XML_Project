@@ -35,6 +35,11 @@ public class Liga implements Serializable{
 	public void removeEquipo(Equipo e) {
 		liga.remove(e);
 	}
+	public boolean removeEquipo(String nombre) {
+		Equipo equipo = new Equipo();
+		equipo.setNombre(nombre);
+		return liga.remove(equipo);
+	}
 	
 	public void mostrarLiga() {
 		if (liga == null || liga.isEmpty()) {
