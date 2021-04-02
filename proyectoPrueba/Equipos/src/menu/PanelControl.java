@@ -33,10 +33,12 @@ public class PanelControl {
 		System.out.println("2.- Exportar liga");
 		System.out.println("3.- Crear liga");
 		System.out.println("4.- Mostrar equipos de la liga");
-		System.out.println("5.- Importar Equipo desde xml");
-		System.out.println("6.- Exportar equipo a xml");
-		System.out.println("7.- Validar liga con DTD");
-		System.out.println("8.- Consulta XQuery");
+		System.out.println("5.- Añadir equipo a la liga");
+		System.out.println("6.- Borrar equipo de la liga");
+		System.out.println("7.- Importar Equipo desde xml");
+		System.out.println("8.- Exportar equipo a xml");
+		System.out.println("9.- Validar liga con DTD");
+		System.out.println("10.- Consulta XQuery");
 		System.out.println("12.- Salir");
 		System.out.println();
 		System.out.println("Escriba el número de la opción que quiere ejecutar");
@@ -82,16 +84,27 @@ public class PanelControl {
 				esperar(2);
 			}
 		break;
-		case 5: 
-			unMarhallEquipo();
+		case 5: // Añadir equipo manualmente
+			if (ligaXML.getLiga() == null) {
+				System.out.println("Liga inexistente, debes crearla o importarla primero para poder añadir equipos");
+				esperar(2);
+			} else {
+				ligaXML.getLiga().leerEquipoDeTeclado();
+			}
 		break;
 		case 6:
+		
+		break;
+		case 7: 
+			unMarhallEquipo();
+		break;
+		case 8:
 			marshallEquipo();
 		break;
-		case 7:
+		case 9:
 			validarLigaConDTD();
 		break;
-		case 8: // Consulta XQuery
+		case 10: // Consulta XQuery
 			System.out.println("Elija una opción a continuación");
 			System.out.println("1- Usar un documento xquery para hacer una consulta");
 			System.out.println("2- Usar una consulta xquery predefinida");
