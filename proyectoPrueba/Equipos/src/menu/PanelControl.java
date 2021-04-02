@@ -150,7 +150,7 @@ public class PanelControl {
 			System.out.println("Equipo que acabas de crear:");
 			System.out.println(equipoCreado);
 			esperar(3);
-			System.out.println("Pulse ok para añadirlo a la liga");
+			System.out.println("Escriba \"ok\" para añadirlo a la liga");
 			String confirmacion = sc2.nextLine();
 			if (confirmacion.equals("ok")) {
 				liga.addEquipo(equipoCreado);
