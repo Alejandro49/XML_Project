@@ -13,8 +13,13 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class CheckDTD {
-	public static void main(String[] args) {
-		File xmlFile = new File("./xml/equipos.xml");
+	
+	public void validarLiga(String nombreArchivo) {
+		
+		String ruta = "./xml/" + nombreArchivo;
+		
+		File xmlFile = new File(ruta);
+		
 		try {
 			DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
 			dBF.setValidating(true);
@@ -38,5 +43,8 @@ public class CheckDTD {
 			Logger.getLogger(CheckDTD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
+		
 	}
+		
+		
 }

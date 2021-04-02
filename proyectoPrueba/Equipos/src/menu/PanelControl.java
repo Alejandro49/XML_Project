@@ -11,16 +11,20 @@ import com.sun.tools.javac.Main;
 
 import pojos.Equipo;
 import pojos.Liga;
+import xml.CheckDTD;
 import xml.LigaXML;
 
 public class PanelControl {
 	
 	LigaXML ligaXML = new LigaXML();
 	
+	CheckDTD validadorDTD;
+	
 	Scanner sc1;
 	Scanner sc2;
 	Scanner sc3;
 	Scanner sc4;
+	Scanner sc5;
 	
 	public void cargarPanel() { //sc1
 		
@@ -84,6 +88,9 @@ public class PanelControl {
 		case 6:
 			marshallEquipo();
 		break;
+		case 7:
+			validarLigaConDTD();
+		break;
 		case 8: // Consulta XQuery
 			System.out.println("Elija una opción a continuación");
 			System.out.println("1- Usar un documento xquery para hacer una consulta");
@@ -108,6 +115,18 @@ public class PanelControl {
 		
 		cargarPanel();
 		
+	}
+
+	private void validarLigaConDTD() {
+		System.out.println("Introduzca el documento xml a validar por DTD liga.dtd");
+		System.out.println("El documento debe de estar en la carpeta ./xml/archivo.xml");
+		System.out.println("Puede escribir si lo desea nuestro archivo por defecto para dtd. Escriba \"ligaDTD.xml\" para validar"
+				+ " nuestra liga por defecto");
+		validadorDTD = new CheckDTD();
+		sc5 = new Scanner(System.in);
+		String nombreArchivo = sc5.nextLine();
+		validadorDTD.validarLiga(nombreArchivo);
+		esperar(3);
 	}
 
 	private void crearLiga() {
