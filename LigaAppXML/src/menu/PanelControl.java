@@ -106,21 +106,7 @@ public class PanelControl {
 			validarLigaConDTD();
 		break;
 		case 10: // Consulta XQuery
-			System.out.println("Elija una opción a continuación");
-			System.out.println("1- Usar un documento xquery para hacer una consulta");
-			System.out.println("2- Usar una consulta xquery predefinida");
-			Scanner lecturaXQuery = new Scanner(System.in);
-			int opcionXQuery = lecturaXQuery.nextInt();
-			esperar(1);
-			if (opcionXQuery == 1) {
-				
-			}
-			else if (opcionXQuery == 2) {
-				System.out.println("Escoge una consulta predefinida");
-				System.out.println("1- Mostrar todos los equipos ordenados por número de títulos ganados");
-				System.out.println("2- Nombre del presidente del Real Madrid");
-				System.out.println("3- Todos los entrenadores de Francia");
-			}
+			consultaXQuery();
 			break;
 		case 12:
 			System.exit(0);
@@ -131,6 +117,25 @@ public class PanelControl {
 		
 	}
 
+	private void consultaXQuery() {
+		System.out.println("Elija una opción a continuación");
+		System.out.println("1- Usar un documento xquery para hacer una consulta");
+		System.out.println("2- Usar una consulta xquery predefinida");
+		Scanner lecturaXQuery = new Scanner(System.in);
+		int opcionXQuery = lecturaXQuery.nextInt();
+		esperar(1);
+		if (opcionXQuery == 1) {
+			
+		}
+		else if (opcionXQuery == 2) {
+			System.out.println("Escoge una consulta predefinida");
+			System.out.println("1- Mostrar todos los equipos ordenados por número de títulos ganados");
+			System.out.println("2- Nombre del presidente del Real Madrid");
+			System.out.println("3- Todos los entrenadores de Francia");
+		}
+	}
+	
+	
 	private void borrarEquipo() {
 		if (ligaXML.getLiga() == null) {
 			System.out.println("Liga inexistente.");
