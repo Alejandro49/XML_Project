@@ -125,6 +125,11 @@ public class PanelControl {
 		int opcionXQuery = sc8.nextInt();
 		esperar(1);
 		if (opcionXQuery == 1) {
+			do {
+				System.out.println("Introduce el nombre del documento que va a usar:")
+				String nombreDocumento = sc8.nextLine();
+			}while(nombreDocumento == "")
+			
 			
 		}
 		else if (opcionXQuery == 2) {
