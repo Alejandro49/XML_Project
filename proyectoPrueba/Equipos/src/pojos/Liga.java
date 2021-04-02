@@ -51,7 +51,16 @@ public class Liga implements Serializable{
          } catch (Exception e) {
             System.out.println(e);
          }
-    }   
+    }
+	
+	public Equipo getEquipo(Equipo eq) {
+		int index = liga.indexOf(eq);
+		if (index == -1) {
+			return null;
+		} else {
+			return liga.get(index);
+		}
+	}
 	
 	public ArrayList<Equipo> getLiga() {
 		return liga;

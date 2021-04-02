@@ -59,10 +59,10 @@ public class PanelControl {
 		
 		switch(opcion) {
 		case 1: //Importar liga
-			unMarshall();		   
+			unMarshallLiga();		   
 		break;
 		case 2: // Exportar liga
-			marshall();
+			marshallLiga();
 		break;
 		case 3: //Crear liga
 			crearLiga();
@@ -144,11 +144,34 @@ public class PanelControl {
 		ligaXML.setLiga(liga);
 	}
 	
-	private void marshallEquipo() {
+	private void marshallEquipo() { //sc4
 		sc4 = new Scanner(System.in);
 		System.out.println("Introduzca el nombre exacto del equipo que quieres exportar");
 		String nombre = sc4.nextLine();
-		
+		Equipo eq = new Equipo();
+		eq.setNombre(nombre);
+		try {
+			eq = ligaXML.getLiga().getEquipo(eq);
+		} catch (NullPointerException ex) {
+			System.out.println("Error, liga inexistente, importala o creala primero");
+			esperar(2);
+			return;
+		}
+		if (eq == null) {
+			System.out.println("Ese equipo no está en la liga");
+			esperar(2);
+		} else {
+			try {
+				ligaXML.exportarEquipo(eq);
+				String mensaje = "Equipo exportado a ./xml/" + eq.getNombre() + ".xml";
+				System.out.println(mensaje);
+				esperar(2);
+			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return;
 	}
 
 	private boolean unMarhallEquipo() {
@@ -179,7 +202,7 @@ public class PanelControl {
 		return true;
 	}
 
-	private void marshall() {
+	private void marshallLiga() {
 		System.out.println("Exportando liga al archivo ./xml/ligaExportada.xml");
 		try {
 			ligaXML.exportarLiga(ligaXML.getLiga());
@@ -198,7 +221,7 @@ public class PanelControl {
 	
 	
 
-	private void unMarshall() {
+	private void unMarshallLiga() {
 		System.out.println("Importando liga del archivo ./xml/liga.xml");
 		   try {
 			ligaXML.importarLiga();

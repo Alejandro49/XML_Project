@@ -54,6 +54,22 @@ public class LigaXML {
 		return equipo;
 	}
 	
+	public  void exportarEquipo(Equipo eq) throws JAXBException {
+		String ruta = "./xml/" + eq.getNombre() + ".xml";
+		// Creamos el JAXBContext
+		JAXBContext jaxbC = JAXBContext.newInstance(Equipo.class);
+		// Creamos el JAXBMarshaller
+		Marshaller jaxbM = jaxbC.createMarshaller();
+		// Formateo bonito
+		jaxbM.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+		//jaxbM.setProperty("com.sun.xml.bind.xmlDeclaration", false);
+		// Escribiendo en un fichero
+		File XMLfile = new File(ruta);
+		jaxbM.marshal(eq, XMLfile);
+		// Escribiendo por pantalla
+		//jaxbM.marshal(book, System.out);
+	}
+	
 
 	public Liga getLiga() {
 		return liga;
