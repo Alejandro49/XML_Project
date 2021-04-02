@@ -28,10 +28,11 @@ public class TestXPath {
         XPath xpath = xpathfactory.newXPath();
 
         // Aqui preguntamos al usuario por consola la consulta que quiere realizar de XPath
-        System.out.print("Introduce la consulta deseada: ");
+       /* System.out.print("Introduce la consulta deseada: ");
         String  consulta = "";
         Scanner entradaEscaner = new Scanner (System.in);
          consulta = entradaEscaner.nextLine (); // leemos todas las lineas que pueda ocupar la consulta
+       */consulta = "//Equipo" 
         String xPathtxt = consulta;
         XPathExpression expr = xpath.compile(xPathtxt); //javax.xml.xpath.XPathExpression
         Object result = expr.evaluate(doc, XPathConstants.NODESET);

@@ -121,8 +121,8 @@ public class PanelControl {
 		System.out.println("Elija una opción a continuación");
 		System.out.println("1- Usar un documento xquery para hacer una consulta");
 		System.out.println("2- Usar una consulta xquery predefinida");
-		Scanner lecturaXQuery = new Scanner(System.in);
-		int opcionXQuery = lecturaXQuery.nextInt();
+		Scanner sc8 = new Scanner(System.in);
+		int opcionXQuery = sc8.nextInt();
 		esperar(1);
 		if (opcionXQuery == 1) {
 			
