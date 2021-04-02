@@ -31,6 +31,7 @@ public class PanelControl {
 		System.out.println("4.- Mostrar equipos de la liga");
 		System.out.println("5.- Importar Equipo desde xml");
 		System.out.println("6.- Exportar equipo a xml");
+		System.out.println("7.- Validar liga con DTD");
 		System.out.println("8.- Consulta XQuery");
 		System.out.println("12.- Salir");
 		System.out.println();
