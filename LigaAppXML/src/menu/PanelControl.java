@@ -26,21 +26,24 @@ public class PanelControl {
 	Scanner sc4;
 	Scanner sc5;
 	Scanner sc6;
+	Scanner sc7;
 	
 	public void cargarPanel() { //sc1
 		
 		System.out.println("¿Que desea hacer?");
-		System.out.println("1.- Importar liga");
-		System.out.println("2.- Exportar liga");
-		System.out.println("3.- Crear liga");
-		System.out.println("4.- Mostrar equipos de la liga");
-		System.out.println("5.- Añadir equipo a la liga");
-		System.out.println("6.- Borrar equipo de la liga");
-		System.out.println("7.- Importar Equipo desde xml");
-		System.out.println("8.- Exportar equipo a xml");
-		System.out.println("9.- Validar liga con DTD");
-		System.out.println("10.- Consulta XQuery");
-		System.out.println("12.- Salir");
+		System.out.println("1.- Inicializar liga predefinida");
+		System.out.println("2.- Importar liga");
+		System.out.println("3.- Exportar liga");
+		System.out.println("4.- Crear liga");
+		System.out.println("5.- Mostrar equipos de la liga");
+		System.out.println("6.- Añadir equipo a la liga");
+		System.out.println("7.- Borrar equipo de la liga");
+		System.out.println("8.- Importar Equipo desde xml");
+		System.out.println("9.- Exportar equipo a xml");
+		System.out.println("10.- Validar liga con DTD");
+		System.out.println("11.- Consultas XPath");
+		System.out.println("12.- Consultas XQuery");
+		System.out.println("13.- Salir");
 		System.out.println();
 		System.out.println("Escriba el número de la opción que quiere ejecutar");
 		
@@ -54,7 +57,7 @@ public class PanelControl {
 			esperar(2);
 		}
 		
-		if (opcion>0 && opcion<13) {
+		if (opcion>0 && opcion<14) {
 			ejecutarOpcion(opcion);
 		} else {
 			System.out.println("Opción incorrecta. Vuelva a intentarlo");
@@ -66,16 +69,19 @@ public class PanelControl {
 	public void ejecutarOpcion(int opcion) { //sc2
 		
 		switch(opcion) {
-		case 1: //Importar liga
-			unMarshallLiga();		   
+		case 1:
+			inicializarLigaPredefinida();
 		break;
-		case 2: // Exportar liga
+		case 2: //Importar liga
+			unmarshallLiga();		   
+		break;
+		case 3: // Exportar liga
 			marshallLiga();
 		break;
-		case 3: //Crear liga
+		case 4: //Crear liga
 			crearLiga();
 		break;
-		case 4: // Mostrar equipos
+		case 5: // Mostrar equipos
 			System.out.println("Mostrando los equipos de la liga:");
 			esperar(2);
 			try {
@@ -85,7 +91,7 @@ public class PanelControl {
 				esperar(2);
 			}
 		break;
-		case 5: // Añadir equipo manualmente
+		case 6: // Añadir equipo manualmente
 			if (ligaXML.getLiga() == null) {
 				System.out.println("Liga inexistente, debes crearla o importarla primero para poder añadir equipos");
 				esperar(2);
@@ -93,22 +99,25 @@ public class PanelControl {
 				ligaXML.getLiga().leerEquipoDeTeclado();
 			}
 		break;
-		case 6: // Borrar equipo mediante su nombre // sc6
+		case 7: // Borrar equipo mediante su nombre // sc6
 			borrarEquipo();
 		break;
-		case 7: 
+		case 8: 
 			unMarhallEquipo();
 		break;
-		case 8:
+		case 9:
 			marshallEquipo();
 		break;
-		case 9:
+		case 10:
 			validarLigaConDTD();
 		break;
-		case 10: // Consulta XQuery
+		case 11:
+		//Consulta XPath
+		break;
+		case 12: // Consulta XQuery
 			//consultaXQuery();
 			break;
-		case 12:
+		case 13:
 			System.exit(0);
 		break;
 		}
@@ -282,12 +291,32 @@ public class PanelControl {
 		   }
 	}
 	
+	private void unmarshallLiga() { //sc7
+		sc7 = new Scanner(System.in);
+		System.out.println("Introduzca el nombre del fichero de la liga a importar (debe de estar dentro de ./xml/Nombre_Fichero.xml)");
+		String nombreFichero = sc7.nextLine();
+		try {
+			ligaXML.importarLiga(nombreFichero);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+			System.out.println("Se ha producido un error inesperado");
+			return;
+		} catch (IllegalArgumentException ex) {
+			System.out.println("No se ha encontrado el archivo");
+			esperar(2);
+			return;
+		}
+		
+		System.out.println("Liga importada correctamente");
+		esperar(2);
+	}
+	
 	
 
-	private void unMarshallLiga() {
-		System.out.println("Importando liga del archivo ./xml/liga.xml");
+	private void inicializarLigaPredefinida() {
+		System.out.println("Importando liga del archivo ./xml/ligaPredefinida.xml");
 		   try {
-			ligaXML.importarLiga();
+			ligaXML.importarLigaPredefinida();
 			System.out.println("Liga importada con éxito");
 			System.out.println("Elija la opción Mostrar para ver los equipos que conforman la liga");
 			esperar(2);

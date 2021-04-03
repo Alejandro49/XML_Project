@@ -16,14 +16,14 @@ public class LigaXML {
 	private Liga liga;
 	private Equipo equipo;
 	
-	public void importarLiga() throws JAXBException {
+	public void importarLigaPredefinida() throws JAXBException {
 		//unMarshalling()
 		// Creamos el JAXBContext
 		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
 		// Creamos el JAXBMarshaller
 		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
 		// Leyendo un fichero
-		File XMLfile = new File("./xml/liga.xml");
+		File XMLfile = new File("./xml/ligaPredefinida.xml");
 		// Creando el objeto
 		liga = (Liga) jaxbU.unmarshal(XMLfile);
 		// Escribiendo por pantalla el objeto
@@ -43,6 +43,14 @@ public class LigaXML {
 		File XMLfile = new File("./xml/ligaExportada.xml");
 		jaxbM.marshal(liga, XMLfile);
 
+	}
+	
+	public void importarLiga(String nombreFichero) throws JAXBException {
+		String ruta = "./xml/" + nombreFichero;
+		JAXBContext jaxbC = JAXBContext.newInstance(Liga.class);
+		Unmarshaller jaxbU = jaxbC.createUnmarshaller();
+		File XMLfile = new File(ruta);
+		liga = (Liga) jaxbU.unmarshal(XMLfile);
 	}
 	
 	public Equipo importarEquipo(String nombreFichero) throws JAXBException {
