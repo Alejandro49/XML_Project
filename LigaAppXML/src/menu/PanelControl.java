@@ -133,9 +133,10 @@ public class PanelControl {
 	}
 
 	private void consultasXPath() {
-		System.out.println("Seleccione una opción");
+		System.out.println("Seleccione una opción, las consultas se ejecutan sobre ./xml/ligaPredefinida.xml");
 		System.out.println("1- Consultas XPath predefinidas");
 		System.out.println("2- Insertar consulta propia (Seguir formato XPath)");
+		System.out.println("3- Volver al menu principal");
 		
 		Scanner sc = new Scanner(System.in);
 		int opcion = 0;
@@ -155,13 +156,25 @@ public class PanelControl {
 				e.printStackTrace();
 			}
 		} else if (opcion == 2) {
-			//Consulta propia
+			System.out.println("Escriba a continuación la sentencia XPath que quiere ejecutar sobre ligaPredefinida.xml:");
+			Scanner sc1 = new Scanner(System.in);
+			String sentencia = sc1.nextLine();
+			try {
+				xpath.ejecutarXPath(sentencia);
+			} catch (XPathExpressionException | SAXException | IOException | ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("Error de formato, volviendo al menu principal");
+				esperar(2);
+				return;
+			}
+		} else if (opcion == 3) {
+			return;
 		} else {
 			System.out.println("Opcion incorrecta");
 			esperar(2);
 			return;
-		}
-			
+		}	
 	}
 	
 
