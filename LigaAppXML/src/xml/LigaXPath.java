@@ -1,7 +1,7 @@
 package xml;
 
 import java.io.IOException;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -26,7 +26,7 @@ public class LigaXPath {
     	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     	factory.setNamespaceAware(true);
     	DocumentBuilder builder = factory.newDocumentBuilder();
-    	Document doc = builder.parse("./xml/Empresa.xml"); //org.w3c.dom.Document
+    	Document doc = builder.parse("./xml/ligaPredefinida.xml"); //org.w3c.dom.Document
 
     	//Crear XPath
     	XPathFactory xpathfactory = XPathFactory.newInstance();
@@ -63,8 +63,10 @@ public class LigaXPath {
     	Object result = expr.evaluate(doc, XPathConstants.NODESET);
     	NodeList nodes = (NodeList) result; //org.w3c.dom.NodeList
     	for (int i = 0; i < nodes.getLength(); i++) {
+    		esperar(1);
     	    System.out.println(processNode(nodes.item(i)));
     	}
+    	esperar(2);
 	}
 	
 	public void ejecutarXPath(String sentencia) throws XPathExpressionException, SAXException, IOException, ParserConfigurationException {
@@ -73,7 +75,7 @@ public class LigaXPath {
     	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     	factory.setNamespaceAware(true);
     	DocumentBuilder builder = factory.newDocumentBuilder();
-    	Document doc = builder.parse("./xml/Empresa.xml"); //org.w3c.dom.Document
+    	Document doc = builder.parse("./xml/ligaPredefinida.xml"); //org.w3c.dom.Document
 
     	//Crear XPath
     	XPathFactory xpathfactory = XPathFactory.newInstance();
@@ -101,9 +103,34 @@ public class LigaXPath {
         return data;
     }
     
-    public void xPathPredefinidas() {
-    	
+    public void xPathPredefinidas() throws XPathExpressionException, SAXException, IOException, ParserConfigurationException {
+    	mostrarConsultasPredefinidas();
+    	System.out.println("Escriba el nº de sentencia que quiere ejecutar");
+    	Scanner sc = new Scanner(System.in);
+    	int sentencia = 0;
+    	try {
+    		sentencia = sc.nextInt();
+    	} catch (InputMismatchException ime){
+			System.out.println("Debes introducir un número entero. Vuelve a intentarlo");
+			esperar(2);
+			xPathPredefinidas();
+		}
+    	sc.nextLine();
+    	if (sentencia>0 && sentencia<6) {
+    		ejecutarXPathPredefinida(sentencia);
+    		esperar(3);
+    	} else {
+    		System.out.println("Opcion incorrecta");
+    	}
+    	System.out.println("Escriba \"ok\" para seguir ejecutando consultas XPath");
+		String confirmacion = sc.nextLine();
+		if (confirmacion.equals("ok")) {
+			xPathPredefinidas();
+		} else {
+			return;
+		}
     }
+    
     
     private void mostrarConsultasPredefinidas() {
     	System.out.println("1º Consulta: Mostrar el nombre de todos los equipos");
@@ -112,5 +139,13 @@ public class LigaXPath {
     	System.out.println("4º Consulta: Mostrar los entrenadores de los equipos ingleses");
     	System.out.println("5º Consulta: Mostrar el presidente del Real Madrid");
     }
+    
+    public static void esperar(int segundos){
+        try {
+            Thread.sleep(segundos * 1000);
+         } catch (Exception e) {
+            System.out.println(e);
+         }
+    }   
 
 }

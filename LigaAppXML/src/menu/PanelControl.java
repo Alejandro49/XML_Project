@@ -6,6 +6,10 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
+
+import org.xml.sax.SAXException;
 
 import com.sun.tools.javac.Main;
 
@@ -130,19 +134,37 @@ public class PanelControl {
 
 	private void consultasXPath() {
 		System.out.println("Seleccione una opción");
-		
 		System.out.println("1- Consultas XPath predefinidas");
 		System.out.println("2- Insertar consulta propia (Seguir formato XPath)");
-		Scanner sc = new Scanner(System.in);
-		int opcion = sc.nextInt();
 		
-		if (opcion == 1) {
-			
+		Scanner sc = new Scanner(System.in);
+		int opcion = 0;
+		try {
+			opcion = sc.nextInt();
+		} catch (InputMismatchException ime){
+			System.out.println("Debes introducir un número entero. Vuelve a intentarlo");
+			esperar(2);
+			return;
 		}
 		
+		if (opcion == 1) {
+			try {
+				xpath.xPathPredefinidas();
+			} catch (XPathExpressionException | SAXException | IOException | ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (opcion == 2) {
+			//Consulta propia
+		} else {
+			System.out.println("Opcion incorrecta");
+			esperar(2);
+			return;
+		}
+			
 	}
 	
-	public void
+
 
 	/*private void consultaXQuery() {
 		System.out.println("Elija una opción a continuación");
