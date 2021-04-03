@@ -13,12 +13,14 @@ import pojos.Equipo;
 import pojos.Liga;
 import xml.CheckDTD;
 import xml.LigaXML;
+import xml.LigaXPath;
 
 public class PanelControl {
 	
 	LigaXML ligaXML = new LigaXML();
 	
 	CheckDTD validadorDTD;
+	LigaXPath xpath = new LigaXPath();
 	
 	Scanner sc1;
 	Scanner sc2;
@@ -112,7 +114,7 @@ public class PanelControl {
 			validarLigaConDTD();
 		break;
 		case 11:
-		//Consulta XPath
+			consultasXPath();
 		break;
 		case 12: // Consulta XQuery
 			//consultaXQuery();
@@ -125,6 +127,22 @@ public class PanelControl {
 		cargarPanel();
 		
 	}
+
+	private void consultasXPath() {
+		System.out.println("Seleccione una opción");
+		
+		System.out.println("1- Consultas XPath predefinidas");
+		System.out.println("2- Insertar consulta propia (Seguir formato XPath)");
+		Scanner sc = new Scanner(System.in);
+		int opcion = sc.nextInt();
+		
+		if (opcion == 1) {
+			
+		}
+		
+	}
+	
+	public void
 
 	/*private void consultaXQuery() {
 		System.out.println("Elija una opción a continuación");
