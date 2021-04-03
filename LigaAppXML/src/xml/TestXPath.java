@@ -32,7 +32,7 @@ public class TestXPath {
         String  consulta = "";
         Scanner entradaEscaner = new Scanner (System.in);
          consulta = entradaEscaner.nextLine (); // leemos todas las lineas que pueda ocupar la consulta
-       */consulta = "//Equipo" 
+    
         String xPathtxt = consulta;
         XPathExpression expr = xpath.compile(xPathtxt); //javax.xml.xpath.XPathExpression
         Object result = expr.evaluate(doc, XPathConstants.NODESET);
@@ -40,7 +40,7 @@ public class TestXPath {
         for (int i = 0; i < nodes.getLength(); i++) {
             System.out.println(processNode(nodes.item(i)));
         }
-
+*/
     }
 
     public static String processNode(Node node) {

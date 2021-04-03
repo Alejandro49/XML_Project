@@ -1,11 +1,6 @@
 
 <!DOCTYPE Liga SYSTEM "liga.dtd">
 <Liga>
-    <Equipo nombre="Real Madrid" pais="España">
-        <titulos>92</titulos>
-        <entrenador>Zinedine Zidane</entrenador>
-        <presidente>Florentino Pérez</presidente>
-    </Equipo>
     <Equipo nombre="Paris Saint-Germain" pais="Francia">
         <titulos>42</titulos>
         <entrenador>Mauricio Pochettino</entrenador>

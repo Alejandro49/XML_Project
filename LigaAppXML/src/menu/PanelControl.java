@@ -106,7 +106,7 @@ public class PanelControl {
 			validarLigaConDTD();
 		break;
 		case 10: // Consulta XQuery
-			consultaXQuery();
+			//consultaXQuery();
 			break;
 		case 12:
 			System.exit(0);
@@ -117,7 +117,7 @@ public class PanelControl {
 		
 	}
 
-	private void consultaXQuery() {
+	/*private void consultaXQuery() {
 		System.out.println("Elija una opción a continuación");
 		System.out.println("1- Usar un documento xquery para hacer una consulta");
 		System.out.println("2- Usar una consulta xquery predefinida");
@@ -128,7 +128,7 @@ public class PanelControl {
 			do {
 				System.out.println("Introduce el nombre del documento que va a usar:")
 				String nombreDocumento = sc8.nextLine();
-			}while(nombreDocumento == "")
+			}while(nombreDocumento == "");
 			
 			
 		}
@@ -139,7 +139,7 @@ public class PanelControl {
 			System.out.println("3- Todos los entrenadores de Francia");
 		}
 	}
-	
+	*/
 	
 	private void borrarEquipo() {
 		if (ligaXML.getLiga() == null) {
