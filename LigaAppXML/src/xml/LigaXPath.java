@@ -33,9 +33,9 @@ public class LigaXPath {
     	XPath xpath = xpathfactory.newXPath();
     
     	
-    	String sentencia1 = "//Equipo/data(@nombre)"; //Mostrar el nombre de todos los equipos
+    	String sentencia1 = "//Equipo/@nombre"; //Mostrar el nombre de todos los equipos
     	String sentencia2 = "//Equipo[@pais=\"España\"]/@nombre"; // Mostrar el nombre de los equipos españoles
-    	String sentencia3 = "//Equipo[titulos>50]/data(@nombre)"; // Mostrar el nombre de los equipos con más de 50 titulo
+    	String sentencia3 = "//Equipo[titulos>50]/@nombre"; // Mostrar el nombre de los equipos con más de 50 titulo
     	String sentencia4 = "//Equipo[@pais=\"Inglaterra\"]/entrenador/text()"; // Mostrar los entrenadores de los equipos ingleses
     	String sentencia5 = "//Equipo[@nombre=\"Real Madrid\"]/presidente/text()"; // Mostrar el presidente del Real Madrid
     	
