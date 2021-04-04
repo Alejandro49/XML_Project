@@ -13,8 +13,9 @@ import javax.xml.xquery.XQException;
 import javax.xml.xquery.XQPreparedExpression;
 import javax.xml.xquery.XQResultSequence;
 
-public class TestXQuery {
-        public static void main(String[] args) throws XQException {
+public class LigaXQuery {
+	
+        public void consultas() throws XQException {
                 File queryFile = new File("./xml/ConsultasPredefinidas.xq");
 
                 XQDataSource xqjd = new SaxonXQDataSource();
@@ -23,7 +24,7 @@ public class TestXQuery {
                 try {
                     inputStream = new FileInputStream(queryFile);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(TestXQuery.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LigaXQuery.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 XQPreparedExpression exp = xqjc.prepareExpression(inputStream);
                 XQResultSequence result = exp.executeQuery();
