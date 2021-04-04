@@ -1,4 +1,3 @@
-
 Explicaremos a continuación como se debe utilizar la aplicación para ello tendrá que seguir los siguientes pasos el usuario:
 
 1. Abrir Eclipse Enterprise Edition
