@@ -8,6 +8,7 @@ import java.util.Scanner;
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xquery.XQException;
 
 import org.xml.sax.SAXException;
 
@@ -18,6 +19,7 @@ import pojos.Liga;
 import xml.CheckDTD;
 import xml.LigaXML;
 import xml.LigaXPath;
+import xml.LigaXQuery;
 
 public class PanelControl {
 	
@@ -25,6 +27,7 @@ public class PanelControl {
 	
 	CheckDTD validadorDTD;
 	LigaXPath xpath = new LigaXPath();
+	LigaXQuery xquery = new LigaXQuery();
 	
 	Scanner sc1;
 	Scanner sc2;
@@ -120,9 +123,9 @@ public class PanelControl {
 		case 11:
 			consultasXPath();
 		break;
-		case 12: // Consulta XQuery
-			//consultaXQuery();
-			break;
+		case 12: 
+			consultasXQuery();
+		break;
 		case 13:
 			System.exit(0);
 		break;
@@ -178,7 +181,43 @@ public class PanelControl {
 	}
 	
 
-
+	private void consultasXQuery() {
+		
+		System.out.println("Seleccione una opción, las consultas se ejecutan sobre ./xml/ligaPredefinida.xml");
+		System.out.println("1- Consultas XQuery predefinidas");
+		System.out.println("2- Insertar nomnbre del fichero XQuery (debe de estar dentro de ./xml/nombre_fichero.xq");
+		System.out.println("3- Volver al menu principal");
+		System.out.println("Opción: ");
+		
+		Scanner sc = new Scanner(System.in);
+		int opcion = 0;
+		
+		try {
+			opcion = sc.nextInt();
+		} catch (InputMismatchException ime){
+			System.out.println("Debes introducir un número entero. Vuelve a intentarlo");
+			esperar(2);
+			return;
+		}
+		
+		if (opcion == 1) {
+			try {
+				xquery.consultasPredefinidas();
+			} catch (XQException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (opcion == 2) {
+			
+		} else if (opcion == 3) {
+			return;
+		} else {
+			System.out.println("Opcion incorrecta");
+			esperar(2);
+			return;
+		}
+		
+	}
 	/*private void consultaXQuery() {
 		System.out.println("Elija una opción a continuación");
 		System.out.println("1- Usar un documento xquery para hacer una consulta");

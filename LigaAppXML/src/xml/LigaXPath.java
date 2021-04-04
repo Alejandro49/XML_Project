@@ -122,7 +122,7 @@ public class LigaXPath {
     	sc.nextLine();
     	if (sentencia>0 && sentencia<6) {
     		ejecutarXPathPredefinida(sentencia);
-    		esperar(3);
+    		esperar(2);
     	} else {
     		System.out.println("Opcion incorrecta");
     	}
