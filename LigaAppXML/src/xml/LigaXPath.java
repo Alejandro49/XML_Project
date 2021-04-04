@@ -33,9 +33,9 @@ public class LigaXPath {
     	XPath xpath = xpathfactory.newXPath();
     
     	
-    	String sentencia1 = "//Equipo/data(@nombre)"; //Mostrar el nombre de todos los equipos
+    	String sentencia1 = "//Equipo/@nombre"; //Mostrar el nombre de todos los equipos
     	String sentencia2 = "//Equipo[@pais=\"España\"]/@nombre"; // Mostrar el nombre de los equipos españoles
-    	String sentencia3 = "//Equipo[titulos>50]/data(@nombre)"; // Mostrar el nombre de los equipos con más de 50 titulo
+    	String sentencia3 = "//Equipo[titulos>50]/@nombre"; // Mostrar el nombre de los equipos con más de 50 titulo
     	String sentencia4 = "//Equipo[@pais=\"Inglaterra\"]/entrenador/text()"; // Mostrar los entrenadores de los equipos ingleses
     	String sentencia5 = "//Equipo[@nombre=\"Real Madrid\"]/presidente/text()"; // Mostrar el presidente del Real Madrid
     	
@@ -66,7 +66,6 @@ public class LigaXPath {
     		esperar(1);
     	    System.out.println(processNode(nodes.item(i)));
     	}
-    	esperar(2);
 	}
 	
 	public void ejecutarXPath(String sentencia) throws XPathExpressionException, SAXException, IOException, ParserConfigurationException {
@@ -86,7 +85,12 @@ public class LigaXPath {
     	XPathExpression expr = xpath.compile(xPathtxt); //javax.xml.xpath.XPathExpression
     	Object result = expr.evaluate(doc, XPathConstants.NODESET);
     	NodeList nodes = (NodeList) result; //org.w3c.dom.NodeList
+    	if (nodes.getLength() == 0) {
+    		System.out.println("No hay resultados para su consulta");
+    		esperar(2);
+    	}
     	for (int i = 0; i < nodes.getLength(); i++) {
+    		esperar(1);
     	    System.out.println(processNode(nodes.item(i)));
     	}
 	}
@@ -122,7 +126,7 @@ public class LigaXPath {
     	} else {
     		System.out.println("Opcion incorrecta");
     	}
-    	System.out.println("Escriba \"ok\" para seguir ejecutando consultas XPath");
+    	System.out.println("Escriba \"ok\" para seguir ejecutando consultas XPath o cualquier tecla para volver al menu principal");
 		String confirmacion = sc.nextLine();
 		if (confirmacion.equals("ok")) {
 			xPathPredefinidas();
