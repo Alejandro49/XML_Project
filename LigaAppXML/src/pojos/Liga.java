@@ -16,7 +16,6 @@ public class Liga implements Serializable{
 
 	private static final long serialVersionUID = -47891006084131330L;
 	
-	
 	@XmlElement(name = "Equipo")
 	private ArrayList<Equipo> liga;
 	
@@ -89,7 +88,7 @@ public class Liga implements Serializable{
 				System.out.println("Introduce el nº de títulos del equipo: ");
 				titulos = lectorTitulos.nextInt();
 			} catch (InputMismatchException ime){
-				System.out.println("Debes introducir un numero entero carapan, no veas lo que cuesta gestionar excepciones...");
+				System.out.println("Debes introducir un numero entero, no veas lo que cuesta gestionar excepciones...");
 				esperar(2);
 			}
 			
