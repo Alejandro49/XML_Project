@@ -127,12 +127,13 @@ public class PanelControl {
 			consultasXQuery();
 		break;
 		case 13:
+			System.out.println("¡Hasta pronto!");
+			esperar(2);
 			System.exit(0);
 		break;
 		}
 		
 		cargarPanel();
-		
 	}
 
 	private void consultasXPath() {
@@ -208,6 +209,19 @@ public class PanelControl {
 				e.printStackTrace();
 			}
 		} else if (opcion == 2) {
+			System.out.println("Introduzca el nombre del fichero.xq a continuacion:");
+			Scanner sc1 = new Scanner(System.in);
+			String nombreArchivo = sc1.nextLine();
+			try {
+				xquery.ejecutarConsulta(nombreArchivo);
+			} catch (XQException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				System.out.println("Archivo no encontrado o consulta con formato incorrecto");
+				esperar(2);
+				consultasXQuery();
+			}
+			consultasXQuery();
 			
 		} else if (opcion == 3) {
 			return;
@@ -218,29 +232,7 @@ public class PanelControl {
 		}
 		
 	}
-	/*private void consultaXQuery() {
-		System.out.println("Elija una opción a continuación");
-		System.out.println("1- Usar un documento xquery para hacer una consulta");
-		System.out.println("2- Usar una consulta xquery predefinida");
-		Scanner sc8 = new Scanner(System.in);
-		int opcionXQuery = sc8.nextInt();
-		esperar(1);
-		if (opcionXQuery == 1) {
-			do {
-				System.out.println("Introduce el nombre del documento que va a usar:")
-				String nombreDocumento = sc8.nextLine();
-			}while(nombreDocumento == "");
-			
-			
-		}
-		else if (opcionXQuery == 2) {
-			System.out.println("Escoge una consulta predefinida");
-			System.out.println("1- Mostrar todos los equipos ordenados por número de títulos ganados");
-			System.out.println("2- Nombre del presidente del Real Madrid");
-			System.out.println("3- Todos los entrenadores de Francia");
-		}
-	}
-	*/
+	
 	
 	private void borrarEquipo() {
 		if (ligaXML.getLiga() == null) {

@@ -17,6 +17,33 @@ import javax.xml.xquery.XQResultSequence;
 
 public class LigaXQuery {
 	
+		public void ejecutarConsulta(String nombreArchivo) throws XQException {
+			
+			String ruta = "./xml/" + nombreArchivo;
+			File queryFile = new File(ruta);
+			
+			 XQDataSource xqjd = new SaxonXQDataSource();
+             XQConnection xqjc = xqjd.getConnection();
+             InputStream inputStream = null;
+             try {
+                 inputStream = new FileInputStream(queryFile);
+             } catch (FileNotFoundException ex) {
+                 Logger.getLogger(LigaXQuery.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             XQPreparedExpression exp = xqjc.prepareExpression(inputStream);
+             XQResultSequence result = exp.executeQuery();
+             while (result.next()) {
+                 System.out.println(result.getItemAsString(null));
+                 esperar(1);
+             }
+             result.close();
+             exp.close();
+             xqjc.close();
+			
+			
+			
+		}
+	
         private void ejecutarConsultaPredefinida(int opcion) throws XQException {
         		
         		String ruta1 = "./xml/xquery1.xq";
