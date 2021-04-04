@@ -80,7 +80,7 @@ public class LigaXQuery {
         	} else {
         		System.out.println("Opcion incorrecta");
         	}
-        	System.out.println("Escriba \"ok\" para seguir ejecutando consultas XPath o cualquier tecla para volver al menu principal");
+        	System.out.println("Escriba \"ok\" para seguir ejecutando consultas XQuery o cualquier tecla para volver al menu principal");
     		String confirmacion = sc.nextLine();
     		if (confirmacion.equals("ok")) {
     			consultasPredefinidas();
